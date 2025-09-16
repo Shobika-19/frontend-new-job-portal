@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                 // ES6 is better for Ant Design
+    "lib": ["dom", "es6"],            // Ensure ES6 is included
+    "allowJs": true,                  // Allow JS files in the project
+    "jsx": "react-jsx",               // New JSX transform (React 17+)
+    "moduleResolution": "node",       // Standard module resolution for Node.js
+    "esModuleInterop": true,          // Allows import of CommonJS modules as ES6
+    "skipLibCheck": true,             // Skip library type checking for performance (set to false if debugging types)
+    "forceConsistentCasingInFileNames": true,  // Ensure consistent casing in file names
+    "noImplicitAny": true,            // Enforce stricter typing
+    "strict": true,                   // Enable all strict type checking options
+    "module": "ESNext",               // Using ESNext for modern module system (optional)
+    "baseUrl": ".",                   // Set the base URL for module resolution
+    "paths": {
+      // You can remove this if no path resolution issues arise
+      "antd/es/*": ["node_modules/antd/es/*"],  
+      "antd/lib/*": ["node_modules/antd/lib/*"]
+    }
+  },
+  "include": ["src", "src/Dashboard.tsx"],   // Ensure all relevant source files are included
+  "exclude": ["node_modules"]  // Exclude the node_modules directory for TypeScript
+}
