@@ -1,18 +1,131 @@
-.custom-dark-table .ant-table-thead > tr > th {
-  background-color: 'lightyellow';
-  color: #0c0b0b !important;
-  border: 1px solid grey !important;
-  font-weight: bold;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
-.custom-dark-table .ant-table-tbody > tr > td {
-  border: 1px solid grey !important;
+
+
+.driver-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f7fa, #c94ae9ff);
 }
-.custom-dark-table .ant-table-tbody > tr:hover > td {
-  background: #e6f7ff;
+
+
+.driver-card {
+  width: 100%;
+  max-width: 500px;  
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.custom-bordered-table .ant-table-container {
-  border: 1px solid  grey !important;
+
+
+.driver-card:hover {
+ 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
-.custom-bordered-table .ant-table-cell {
-  border: 1px solid grey !important;
-}                              
+
+
+.pop-in {
+  animation: popIn 0.6s ease-out;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.driver-header {
+  background: linear-gradient(135deg, #1890ff, #36cfc9);
+  padding: 12px 16px !important;  
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.driver-icon {
+  font-size: 24px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.driver-title {
+  color: #fff !important;
+  margin: 0 !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  letter-spacing: 0.5px;
+
+}
+
+.driver-card .ant-card-body {
+  padding: 12px 16px !important; 
+}
+
+
+.ant-form-item {
+  margin-bottom: 18px !important;
+}
+
+
+.ant-form-item-label > label {
+  font-size: 13px !important;
+  margin-bottom: 4px !important;  
+}
+
+.input-field {
+  border-radius: 6px !important;
+  height: 36px !important;  
+  padding: 4px 8px !important;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.input-field input {
+  height: 30px !important;  
+  padding: 2px 6px !important;
+}
+
+.input-field:hover {
+  box-shadow: 0 0 8px rgba(24, 144, 255, 0.4);
+  transform: scale(1.01);
+}
+
+
+.submit-btn {
+  border-radius: 6px !important;
+  height: 38px !important;  
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  background: linear-gradient(135deg, #1890ff, #36cfc9) !important;
+  border: none !important;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(24, 144, 255, 0.4);
+}
+
+.ant-form-item-label > label {
+  font-size: 14px !important;
+  font-weight: 600 !important;   
+  color: #222 !important;   
+  margin-bottom: 4px !important;
+}

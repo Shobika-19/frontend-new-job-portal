@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Form,
   Input,
@@ -10,13 +10,29 @@ import {
   Select,
 } from "antd";
 import dayjs from "dayjs";
-import { CarOutlined } from "@ant-design/icons";
+import {
+  CarOutlined,
+  UserOutlined,
+  PhoneOutlined,
+  IdcardOutlined,
+  CalendarOutlined,
+  AuditOutlined,
+} from "@ant-design/icons";
+import "./App.css";
 
 const { Title } = Typography;
 const { Option } = Select;
 
 const DriverForm: React.FC = () => {
   const [form] = Form.useForm();
+
+  useEffect(() => {
+
+    const card = document.querySelector(".driver-card");
+    if (card) {
+      card.classList.add("pop-in");
+    }
+  }, []);
 
   const onFinish = (values: any) => {
     notification.success({
@@ -29,71 +45,35 @@ const DriverForm: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "95vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "linear-gradient(135deg, #e0f7fa, #c94ae9ff)",
-        padding: 20,
-      }}
-    >
-      <Card
-        style={{
-          width: "100%",
-          maxWidth: 500,
-          borderRadius: 16,
-          boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            background: "linear-gradient(135deg, #1890ff, #36cfc9)",
-            padding: "20px 16px",
-            textAlign: "center",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-          }}
-        >
-          <CarOutlined
-            style={{
-              fontSize: "28px",
-              color: "#fff",
-              background: "rgba(255, 255, 255, 0.2)",
-              padding: "6px",
-              borderRadius: "50%",
-              boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-            }}
-          />
-          <Title
-            level={3}
-            style={{
-              color: "#fff",
-              margin: 0,
-              fontWeight: 700,
-              fontSize: "20px",
-              letterSpacing: "0.5px",
-            }}
-          >
+    <div className="driver-container">
+      <Card className="driver-card">
+
+        <div className="driver-header">
+          <CarOutlined className="driver-icon" />
+          <Title level={3} className="driver-title">
             Driver Registration
           </Title>
         </div>
+
         <div style={{ padding: "24px" }}>
-          <Form layout="vertical" initialValues={{ vehicleType: "Commercial" }} form={form} onFinish={onFinish}>
+          <Form
+            layout="vertical"
+            initialValues={{ vehicleType: "Commercial" }}
+            form={form}
+            onFinish={onFinish}
+          >
             <Form.Item
               label="Name"
               name="name"
               rules={[{ required: true, message: "Please enter your name" }]}
             >
               <Input
+                prefix={<UserOutlined style={{ color: "#1890ff" }} />}
                 placeholder="Enter your name"
-                style={{ borderRadius: 8, padding: "10px" }}
+                className="input-field"
               />
             </Form.Item>
+
             <Form.Item
               label="Phone Number"
               name="phone"
@@ -106,6 +86,7 @@ const DriverForm: React.FC = () => {
               ]}
             >
               <Input
+                prefix={<PhoneOutlined style={{ color: "#1890ff" }} />}
                 maxLength={10}
                 placeholder="Enter 10-digit phone number"
                 onKeyPress={(e) => {
@@ -113,9 +94,10 @@ const DriverForm: React.FC = () => {
                     e.preventDefault();
                   }
                 }}
-                style={{ borderRadius: 8, padding: "10px" }}
+                className="input-field"
               />
             </Form.Item>
+
             <Form.Item
               label="License Number"
               name="license"
@@ -125,55 +107,54 @@ const DriverForm: React.FC = () => {
               ]}
             >
               <Input
+                prefix={<IdcardOutlined style={{ color: "#1890ff" }} />}
                 placeholder="Enter license number"
                 onKeyPress={(e) => {
                   if (!/[0-9]/.test(e.key)) {
                     e.preventDefault();
                   }
                 }}
-                style={{ borderRadius: 8, padding: "10px" }}
+                className="input-field"
               />
             </Form.Item>
+
             <Form.Item
               label="License Date"
               name="licenseAppliedDate"
-              rules={[
-                { required: true, message: "Please select the applied date" },
-              ]}
+              rules={[{ required: true, message: "Please select the applied date" }]}
             >
               <DatePicker
                 style={{ width: "100%" }}
                 format="DD-MM-YYYY"
+                suffixIcon={<CalendarOutlined style={{ color: "#1890ff" }} />}
                 disabledDate={(current) => current && current > dayjs()}
+                className="input-field"
               />
             </Form.Item>
+
             <Form.Item
               label="Valid Date"
-              name="Valid Date"
-              rules={[
-                { required: true, message: "Please select the Valid date" },
-              ]}
+              name="validDate"
+              rules={[{ required: true, message: "Please select the valid date" }]}
             >
               <DatePicker
                 style={{ width: "100%" }}
                 format="DD-MM-YYYY"
+                suffixIcon={<CalendarOutlined style={{ color: "#1890ff" }} />}
                 disabledDate={(current) => current && current > dayjs()}
+                className="input-field"
               />
             </Form.Item>
-            
 
-            
             <Form.Item
               label="Type of Vehicle"
               name="vehicleType"
-              rules={[
-                { required: true, message: "Please select vehicle type" },
-              ]}
+              rules={[{ required: true, message: "Please select vehicle type" }]}
             >
               <Select
                 placeholder="Select vehicle type"
-                style={{ borderRadius: 8 }}
-                defaultValue="Commercial" 
+                className="input-field"
+                suffixIcon={<AuditOutlined style={{ color: "#1890ff" }} />}
               >
                 <Option value="Private">Private Vehicle</Option>
                 <Option value="Commercial">Commercial Vehicle</Option>
@@ -183,14 +164,13 @@ const DriverForm: React.FC = () => {
 
             <Form.Item
               label="Types of License"
-              name="license type"
-              rules={[
-                { required: true, message: "Please select vehicle type" },
-              ]}
+              name="licenseType"
+              rules={[{ required: true, message: "Please select license type" }]}
             >
               <Select
-                placeholder="Select vehicle type"
-                style={{ borderRadius: 8 }}
+                placeholder="Select license type"
+                className="input-field"
+                suffixIcon={<IdcardOutlined style={{ color: "#1890ff" }} />}
               >
                 <Option value="light">LMV</Option>
                 <Option value="heavy">HGV</Option>
@@ -201,19 +181,7 @@ const DriverForm: React.FC = () => {
             </Form.Item>
 
             <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                block
-                style={{
-                  borderRadius: 8,
-                  height: 45,
-                  fontWeight: 600,
-                  fontSize: "16px",
-                  background: "linear-gradient(135deg, #1890ff, #36cfc9)",
-                  border: "none",
-                }}
-              >
+              <Button type="primary" htmlType="submit" block className="submit-btn">
                 Submit
               </Button>
             </Form.Item>
@@ -223,4 +191,5 @@ const DriverForm: React.FC = () => {
     </div>
   );
 };
+
 export default DriverForm;

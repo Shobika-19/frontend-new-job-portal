@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Input, Button, Layout, Typography, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-
+import './App.css';
 const { Title } = Typography;
 const { Content } = Layout;
 
@@ -15,20 +15,6 @@ const LoginPage: React.FC = () => {
     useState<boolean>(true);
 
   const isOtpComplete = enteredOtp.every((digit) => digit !== "");
-
-  useEffect(() => {
-    if (sessionStorage.getItem("loginPageOpen")) {
-      message.info(
-        "Login page is already open in another tab. Please focus that tab."
-      );
-      navigate("/");
-    } else {
-      sessionStorage.setItem("loginPageOpen", "true");
-    }
-    return () => {
-      sessionStorage.removeItem("loginPageOpen");
-    };
-  }, [navigate]);
 
   useEffect(() => {
     setLoginButtonDisabled(
@@ -94,7 +80,7 @@ const LoginPage: React.FC = () => {
           justifyContent: "center",
           alignItems: "center",
           background: "linear-gradient(135deg, #cc2ed1ff 0%, #E0C3FC 100%)",
-          padding: "20px",
+         
         }}
         className="login-background"
       >

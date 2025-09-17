@@ -1,4 +1,5 @@
 {
+  "homepage": "https://Shobika-19.github.io/frontend-new-job-portal",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -21,6 +22,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -52,9 +55,11 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.0",
+    "@types/express": "^4.17.23",
     "@types/file-saver": "^2.0.7",
     "@types/jest": "^29.5.14",
     "@types/moment": "^2.11.29",
+    "@types/node": "^24.5.0",
     "@types/react": "^18.0.0",
     "@types/react-csv": "^1.1.10",
     "@types/react-dom": "^18.0.0",
@@ -65,6 +70,7 @@
     "jest": "^29.7.0",
     "react-scripts": "^5.0.1",
     "ts-jest": "^29.2.5",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.5"
   }
 }
